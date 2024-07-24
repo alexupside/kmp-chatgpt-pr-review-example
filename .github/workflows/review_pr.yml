@@ -48,7 +48,7 @@ jobs:
           GITHUB_HEAD_REF: ${{ github.head_ref }}
           GITHUB_BASE_REF: ${{ github.base_ref }}
           CHATGPT_KEY: ${{ secrets.OPENAI_API_KEY }}
-          CHATGPT_MODEL: ${{ secrets.CHATGPT_MODEL }}
+          CHATGPT_MODEL: gpt-4
           GITHUB_TOKEN: ${{ secrets.GIT_API_KEY }}
           TARGET_EXTENSIONS: ${{ secrets.TARGET_EXTENSIONS }}
           REPO_OWNER: ${{ github.repository_owner }}
