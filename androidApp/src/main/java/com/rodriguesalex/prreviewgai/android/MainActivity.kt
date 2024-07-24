@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         helloWord = null
         helloWord = "hello"
         println(helloWord!!)
-        throw Exception("Goodbye")
+
         setContent {
             MyApplicationTheme {
                 Surface(
@@ -28,6 +28,8 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
+        TODO()
     }
 }
 
