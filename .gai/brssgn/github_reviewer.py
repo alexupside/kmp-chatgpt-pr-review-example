@@ -18,9 +18,6 @@ def main():
     ai = ChatGPT(vars.chat_gpt_token, vars.chat_gpt_model)
     github = GitHub(vars.token, vars.owner, vars.repo, vars.pull_number)
 
-    # Debugging environment variables
-    Log.print_green(f"Environment Variables: {vars.env_vars}")
-
     remote_name = Git.get_remote_name()
     
     Log.print_green("Remote is", remote_name)
@@ -35,7 +32,7 @@ def main():
         _, file_extension = os.path.splitext(file)
         file_extension = file_extension.lstrip('.')
         if file_extension not in vars.target_extensions:
-            Log.print_yellow(f"Skipping, unsupported extension {file_extension} file {file}")
+            Log.print_yellow(f"Skipping, unsuported extension {file_extension} file {file}")
             continue
 
         try:
@@ -45,22 +42,16 @@ def main():
             Log.print_yellow("File was removed. Continue.", file)
             continue
 
-        if len(file_content) == 0: 
+        if len( file_content ) == 0: 
             Log.print_red("File is empty")
             continue
 
         file_diffs = Git.get_diff_in_file(remote_name=remote_name, head_ref=vars.head_ref, base_ref=vars.base_ref, file_path=file)
-        if len(file_diffs) == 0: 
+        if len( file_diffs ) == 0: 
             Log.print_red("Diffs are empty")
         
         Log.print_green(f"Asking AI. Content Len:{len(file_content)} Diff Len: {len(file_diffs)}")
-        
-        try:
-            response = ai.ai_request_diffs(code=file_content, diffs=file_diffs)
-            Log.print_green(f"AI Response: {response}")
-        except Exception as e:
-            Log.print_red(f"Error communicating with ChatGPT API: {e}")
-            continue
+        response = ai.ai_request_diffs(code=file_content, diffs=file_diffs)
 
         log_file.write(f"{separator}{file_content}{separator}{file_diffs}{separator}{response}{separator}")
 
@@ -69,7 +60,7 @@ def main():
         else:
             responses = AiBot.split_ai_response(response)
             if len(responses) == 0:
-                Log.print_red("Responses were not parsed:", responses)
+                Log.print_red("Responses where not parsed:", responses)
 
             result = False
             for response in responses:
