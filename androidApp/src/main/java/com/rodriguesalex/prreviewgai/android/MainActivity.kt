@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 fun GreetingView(text: String) {
     Text(text = text)
 }
-// check again 6
+// check again 7
 //@Preview
 //@Composable
 //fun DefaultPreview() {

@@ -94,8 +94,8 @@ def post_general_comment(github: GitHub, file: str, text: str) -> bool:
         git_response = github.post_comment_general(message)
         Log.print_yellow("Posted general", git_response)
         return True
-    except RepositoryError:
-        Log.print_red("Failed general comment")
+    except RepositoryError as e:
+        Log.print_red(f"Failed general comment: {e}")
         return False
 
 if __name__ == "__main__":
