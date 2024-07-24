@@ -22,6 +22,7 @@ jobs:
         run: pip install -r .gai/brssgn/requirements.txt
       
       - name: Run Reviewer Script
+        secrets: inherit
         env:
           GITHUB_HEAD_REF: ${{ github.head_ref }}
           GITHUB_BASE_REF: ${{ github.base_ref }}
