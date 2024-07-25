@@ -3,9 +3,12 @@ name: Pull Request ChatGPT review
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  pull_request_target:
+    types: [labeled]
 
 jobs:
   ai_pr_reviewer:
+    if: github.event.label.name == 'ChatGPT-Review'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
