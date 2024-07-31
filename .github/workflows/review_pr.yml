@@ -46,17 +46,7 @@ jobs:
       #     REPO_NAME: ${{ github.event.repository.name }}
       #     PULL_NUMBER: ${{ github.event.number }}
 
-      - name: Check Label
-        id: label_check
-        run: |
-          echo "Label: ${{ github.event.label.name }}"
-          if [ "${{ github.event.label.name }}" != "ChatGPT-Review" ]; then
-            echo "This workflow only runs for the 'ChatGPT-Review' label."
-            exit 1
-          fi
-
       - name: Run Reviewer Script
-        if: steps.label_check.outputs.result == 'success'
         env:
           GITHUB_HEAD_REF: ${{ github.head_ref }}
           GITHUB_BASE_REF: ${{ github.base_ref }}
