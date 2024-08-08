@@ -13,6 +13,11 @@ import com.rodriguesalex.prreviewgai.Greeting
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var helloWord: String? = null
+        helloWord = null
+        helloWord = "hello"
+        println(helloWord!!)
+
         setContent {
             MyApplicationTheme {
                 Surface(
@@ -23,6 +28,8 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
+//        TODO()
     }
 }
 
@@ -30,6 +37,14 @@ class MainActivity : ComponentActivity() {
 fun GreetingView(text: String) {
     Text(text = text)
 }
+// check again 8
+//@Preview
+//@Composable
+//fun DefaultPreview() {
+//    MyApplicationTheme {
+//        GreetingView("Hello, Android!")
+//    }
+//}
 
 @Preview
 @Composable

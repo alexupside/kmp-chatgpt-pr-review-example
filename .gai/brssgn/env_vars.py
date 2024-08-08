@@ -13,9 +13,9 @@ class EnvVars:
         self.head_ref = os.getenv('GITHUB_HEAD_REF') 
 
         self.chat_gpt_token = os.getenv('CHATGPT_KEY') 
-        self.chat_gpt_model = os.getenv('CHATGPT_MODEL') 
+        self.chat_gpt_model = 'gpt-3.5-turbo'
 
-        self.target_extensions = os.getenv('TARGET_EXTENSIONS')
+        self.target_extensions = os.getenv('TARGET_EXTENSIONS') 
         self.target_extensions = [lang.strip() for lang in self.target_extensions.split(",")]
 
         if len(self.target_extensions) == 0:
