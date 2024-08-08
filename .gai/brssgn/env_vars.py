@@ -15,7 +15,7 @@ class EnvVars:
         self.chat_gpt_token = os.getenv('CHATGPT_KEY') 
         self.chat_gpt_model = os.getenv('CHATGPT_MODEL') 
 
-        self.target_extensions = os.getenv('TARGET_EXTENSIONS')
+        self.target_extensions = "kt,java,swift,m,h"
         self.target_extensions = [lang.strip() for lang in self.target_extensions.split(",")]
 
         if len(self.target_extensions) == 0:
